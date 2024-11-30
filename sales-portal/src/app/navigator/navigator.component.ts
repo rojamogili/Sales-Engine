@@ -34,12 +34,13 @@ export class NavigatorComponent implements OnInit {
         },
         {
             label: 'About',
-            icon: 'pi pi-info-circle'
+            icon: 'pi pi-info-circle',
         },
         {
             label: 'Contact',
             icon: 'pi pi-envelope',
-            badge: '3'
+            badge: '3',
+            command: () => this.scrollBottom(),
         }
       ];
 
@@ -53,6 +54,10 @@ export class NavigatorComponent implements OnInit {
 
   addProduct() {
     this.add_product.emit('add');
+  }
+
+  scrollBottom() {
+    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
   }
 
 }
