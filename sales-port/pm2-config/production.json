@@ -1,0 +1,12 @@
+{
+	"apps" : [{
+		"exec_mode" : "cluster_mode",
+		"name" : "OPAL__PROD",
+		"script" : "./server.js",
+		"instances" : 1,
+		"env": {
+			"NODE_ENV": "production",
+			"SERVER_PORT": 3002
+		}
+	}]
+}

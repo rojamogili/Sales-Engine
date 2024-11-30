@@ -1,0 +1,16 @@
+<div class="flex flex-row flex-flow-wrap width-100">
+    <div *ngFor="let element of data">
+        <div class="books-box m-top-10 m-left-10" >
+            <div class="flex flex-h-center width-100">
+                <img src={{element.image}} class="book-img" />
+            </div>
+            <div class="title">
+                {{element.title}}
+            </div>
+            <div class="flex flex-h-center">
+                <img src="../../assets/svg/indian-rupee-sign-solid.svg" style="width: 10px;" />
+                <span class="price">{{element.price}}</span>
+            </div>
+        </div>
+    </div>
+</div>
