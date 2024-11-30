@@ -1,4 +1,4 @@
-FROM node:14.15.4-alpine3.12
+FROM node:18.19.1
 
 RUN mkdir /sales-portal
 WORKDIR /sales-portal
