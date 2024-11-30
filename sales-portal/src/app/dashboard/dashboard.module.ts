@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { provideRoutes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -11,6 +10,9 @@ import { CarouselModule } from 'primeng/carousel';
 import { SidebarModule } from 'primeng/sidebar';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms'; 
+import { ToastModule } from 'primeng/toast';
+import { RippleModule } from 'primeng/ripple';
+import { MessageService } from 'primeng/api'; // or your relevant path
 
 import { DashboardComponent } from './dashboard.component';
 import { SliderCardsComponent } from './slider-cards/slider-cards.component';
@@ -34,10 +36,13 @@ import { AddProductComponent } from './add-product/add-product.component';
     FormsModule,
     NavigatorModule,
     SidebarModule,
-    InputTextModule
+    InputTextModule,
+    ToastModule,
+    RippleModule,
   ],
   providers: [
-    provideRoutes([{path: '', component: DashboardComponent}])
+    provideRoutes([{path: '', component: DashboardComponent}]),
+    MessageService
   ]
 })
 export class DashboardModule { }
