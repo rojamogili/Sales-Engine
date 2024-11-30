@@ -37,26 +37,23 @@ services:
       - /etc/hosts:/etc/hosts
     network_mode: host
 
-  sales_portal:
-    build: 
-        context: ./sales-portal
-        dockerfile: ./Dockerfile
-    # environment:
-    #     NODE_OPTIONS: --max-old-space-size=61144
-
-    volumes:
-        - ./sales-portal:/app
-        - /app/node_modules
-        - /etc/hosts:/etc/hosts
-    network_mode: host
+  # sales:
+  #   build: ./sales-port
+  #   ports:
+  #       - 3002
+  #   volumes:
+  #       - ./sales-port:/sales-port
+  #       - /sales-port/node_modules
+  #       - /etc/hosts:/etc/hosts
+  #   network_mode: host
 
   sales:
-    build: ./sales-port
+    build: ./sales-portal
     ports:
         - 3002
     volumes:
-        - ./sales-port:/sales-port
-        - /sales-port/node_modules
+        - ./sales-portal:/sales-portal
+        - /sales-portal/node_modules
         - /etc/hosts:/etc/hosts
     network_mode: host
 
