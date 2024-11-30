@@ -1,0 +1,68 @@
+{
+   "name": "sales-epic",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "build": "tsc",
+      "prebuild": "npm run swagger",
+      "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\"",
+      "start": "ts-node ./src/index.ts",
+      "start:dev": "nodemon",
+      "start:prod": "node dist/index.js",
+      "swagger": "tsoa spec",
+      "prettier-format": "prettier --config .prettierrc src/**/**.ts src/** --write",
+      "test": "env IS_TESTING_ENV=true jest --config ./jest.config.js --no-cache  --detectOpenHandles --coverage"
+   },
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "@tsoa/cli": "^5.1.1",
+      "@tsoa/runtime": "^5.0.0",
+      "@types/express": "^4.17.15",
+      "axios": "^1.7.8",
+      "bcrypt": "^5.1.0",
+      "body-parser": "^1.20.1",
+      "cookie-parser": "^1.4.6",
+      "cors": "^2.8.5",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "jwt-decode": "^3.1.2",
+      "moment": "^2.29.4",
+      "pg": "^8.8.0",
+      "ramda": "^0.28.0",
+      "reflect-metadata": "^0.1.13",
+      "request": "^2.88.2",
+      "secrets": "^1.1.5",
+      "swagger-jsdoc": "^6.2.8",
+      "swagger-ui-express": "^4.6.2",
+      "ts-node": "^10.9.1",
+      "tsoa": "^3.14.1",
+      "typeorm": "0.2.45",
+      "typescript": "^4.9.4",
+      "uuid": "^8.3.2",
+      "yamljs": "^0.3.0"
+   },
+   "devDependencies": {
+      "@babel/core": "^7.21.3",
+      "@babel/preset-env": "^7.20.2",
+      "@babel/preset-typescript": "^7.21.0",
+      "@jest/globals": "^29.5.0",
+      "babel-cli": "^6.26.0",
+      "babel-jest": "^29.5.0",
+      "babel-preset-env": "^1.7.0",
+      "eslint": "^7.27.0",
+      "jest": "^29.5.0",
+      "nodemon": "^2.0.20",
+      "superagent": "^8.0.9",
+      "supertest": "^6.3.3",
+      "ts-jest": "^29.0.5"
+   },
+   "nodemonConfig": {
+      "watch": [
+         "src"
+      ],
+      "ext": "ts",
+      "exec": "ts-node src/index.ts"
+   }
+}

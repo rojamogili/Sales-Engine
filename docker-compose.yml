@@ -1,0 +1,70 @@
+version: '2'
+services: 
+  postgres:
+    image: postgres:15
+    container_name: postgres_host
+    environment:
+      - POSTGRES_USER=roja
+      - POSTGRES_PASSWORD=roja
+      # - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_DB=sales
+    network_mode: host
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./pg_hba.conf:/etc/postgresql/pg_hba.conf  # Map the custom pg_hba.conf file
+    ports:
+      - "5432:5432"
+
+  sales_epic:
+    build: 
+      context: ./sales-epic
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+      NODE_OPTIONS: "--max-old-space-size=2048"
+      PORT: 5200
+
+      HOST: localhost
+      DB_PORT: 5432
+      DB_USERNAME: roja
+      PASSWORD: roja
+      DATABASE: sales
+      AUTH_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+
+    volumes:
+      - ./sales-epic:/usr/src/app
+      - /usr/src/app/node_modules
+      - /etc/hosts:/etc/hosts
+    network_mode: host
+
+  sales_portal:
+    build: 
+        context: ./sales-portal
+        dockerfile: ./Dockerfile
+    # environment:
+    #     NODE_OPTIONS: --max-old-space-size=61144
+
+    volumes:
+        - ./sales-portal:/app
+        - /app/node_modules
+        - /etc/hosts:/etc/hosts
+    network_mode: host
+
+  sales:
+    build: ./sales-port
+    ports:
+        - 3002
+    volumes:
+        - ./sales-port:/sales-port
+        - /sales-port/node_modules
+        - /etc/hosts:/etc/hosts
+    network_mode: host
+
+
+networks:
+  host:
+      name: host
+      external: true
+    
+volumes:
+  postgres_data: # named volumes can be managed easier using docker-compose

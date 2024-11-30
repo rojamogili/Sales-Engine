@@ -1,0 +1,27 @@
+
+<div>
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            
+        </ng-template>
+        <ng-template pTemplate="item" let-item let-root="root">
+            <a pRipple class="flex align-items-center p-menuitem-link">
+                <span [class]="item.icon"></span>
+                <span class="ml-2">{{ item.label }}</span>
+                <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge"></p-badge> 
+                <i *ngIf="item.items" [ngClass]="['pi', root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto']"></i>
+            </a>
+        </ng-template>
+        <ng-template pTemplate="end">
+            <div class="flex-row flex">
+                <div class="flex align-items-center gap-2">
+                    <input type="text" [ngModel]="search_str" (input)="search($event)" pInputText placeholder="Search" class="w-8rem sm:w-auto input-height" />
+                </div>
+                <div class="flex flex-v-center ml-25 mr-15">
+                    <span class="pi pi-shopping-cart font-25"></span> 
+                </div>
+            </div>
+            
+        </ng-template>
+    </p-menubar>
+</div>

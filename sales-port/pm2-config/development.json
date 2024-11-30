@@ -1,0 +1,15 @@
+{
+	"apps" : [{
+		"exec_mode" : "cluster",
+		"name" : "OPAL__DEV",
+		"script" : "./server.js",
+		"instances" : 1,
+		"watch": true,
+		"ignore_watch" : [".git", "tmp","node_modules", "uploads", "src", "build", "bundle", "dist"],
+		"env": {
+			"NODE_ENV": "development",
+			"NODE_TLS_REJECT_UNAUTHORIZED": "0",
+			"SERVER_PORT": 3002
+		}
+	}]
+}

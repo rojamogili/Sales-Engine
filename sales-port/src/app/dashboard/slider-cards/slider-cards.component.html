@@ -1,0 +1,57 @@
+<!-- <div class="card">
+  <p-carousel 
+      [value]="slide_info" 
+      [numVisible]="1" 
+      [numScroll]="1" 
+      [circular]="false" >
+          <ng-template let-product >
+              <div class="border-1 surface-border border-round m-2 p-3">
+                  <div class="mb-3">
+                      <div class="relative mx-auto">
+                          <img 
+                              src="{{ product }}" 
+                              class="w-full border-round" />
+                          
+                      </div>
+                  </div>
+                    
+                  </div>
+              </div>
+          </ng-template>
+  </p-carousel>
+</div> -->
+
+
+
+
+
+
+
+<div class="card">
+    <p-carousel
+      [value]="products"
+      [numVisible]="1"
+      [numScroll]="1"
+      [circular]="true"
+    >
+      <ng-template let-product pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 p-3">
+          <div class="mb-3">
+            <div class="relative mx-auto" style="width: 100%;">
+              <img
+                src="{{ product }}"
+                [alt]="product.name"
+                class="w-full border-round img-size"
+              />
+            </div>
+          </div>
+          <!-- <div class="flex justify-content-between align-items-center">
+            <span>
+              <p-button icon="pi pi-shopping-cart" styleClass="ml-2"></p-button>
+            </span>
+          </div> -->
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+  
